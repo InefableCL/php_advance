@@ -1,0 +1,18 @@
+{% include 'header.twig' %}
+<div class="wrap_form">
+    <form enctype="multipart/form-data" action="loadImage" method="post">
+        <input type="file" name="new_file" value=""/>
+        <input type="submit" name="load_file" value="Отправить файл"/>
+    </form>
+</div>
+<div class="wrap clear_fix">
+    <ul>
+        {% for picture in pictures %}
+        <li>
+            <a href="{{ picture.href }}" target="_blank" style="background-image: url('{{ picture.thumb }}');"></a>
+            <div><span>{{ picture.date }}</span><br><span> Просмотров: {{ picture.review }}</span></div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% include 'footer.twig' %}
