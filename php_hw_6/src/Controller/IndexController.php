@@ -82,6 +82,22 @@ class IndexController extends AbstractController
 
         return $this->redirectToRoute('shopItem', ['id' => $shopItems->getId()]);
     }
+    
+    /**
+     * @Route("/shop/cart/delete/{id<\d+>}", name="shopCartDelete", requirements={"id":"\d+"})
+     *
+     * @param ShopCart $shopCart
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function shopCartDelete(ShopCart $shopCart, EntityManagerInterface $em, ShopCartRepository $cartRepository): Response
+    {
+
+        $em->remove($shopCart);
+        $em->flush();
+
+        return $this->redirectToRoute('shopCart');
+    }
 
     /**
      * @Route("/shop/item/{id<\d+>}", name="shopItem")
