@@ -28,6 +28,7 @@
                     <h5>{{ item.shopItem.price }} руб</h5>
                     {% set sum = sum + item.shopItem.price %}
                     
+                    <a href="{{ path('shopCartDelete', {'id': item.id}) }}" class="btn btn-success mt-2" style="width: 200px;">Удалить</a>
                 </div>
             </div>
     </div>
